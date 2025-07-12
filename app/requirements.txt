@@ -1,0 +1,5 @@
+panel
+langchain
+langchain-community
+mistralai
+openai

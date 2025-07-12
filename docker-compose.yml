@@ -1,0 +1,22 @@
+name: Run Mistral Panel App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-app:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Docker image
+      run: docker build -t mistral-chat ./.
+
+    - name: Run Docker container
+      run: docker run -d -p 5006:5006 mistral-chat
